@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "892b3b40-177f-48ea-8d90-485bf425433b",
+		"name": "Online Food Ordering JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6891003",
+		"_collection_link": "https://www.postman.com/dmc-feb25/workspace/dmc-aug25/collection/6891003-892b3b40-177f-48ea-8d90-485bf425433b?action=share&source=collection_link&creator=6891003"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"test\",\r\n    \"confirmPassword\": \"test\",\r\n    \"mobile\": \"9822012345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test User\",\r\n    \"mobile\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"passwd\":\"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/authenticate",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/byemail/nilesh@gmail.com",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"byemail",
+								"nilesh@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"test123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "food image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/images/EggCurry.jpg",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"images",
+								"EggCurry.jpg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete food image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/foods/images/AluParatha.jpg",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods",
+								"images",
+								"AluParatha.jpg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Alu Paratha",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "140.0",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Indian Breakfast flatbreads made with whole wheat flour, boiled potatoes, spices",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Veg",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/Nilesh/Aug25/food-images/paratha.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/foods",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update food",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Alu Paratha",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "145.0",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Delicious Alu Paratha with Butter",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Veg",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/Nilesh/Aug25/food-images/AluParatha.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/foods/11",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change price",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 80.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/foods/1/price",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods",
+								"1",
+								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all foods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/foods",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get food by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/foods/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete food by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/foods/16",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"foods",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "get Order Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/orders/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Order Summaries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/orders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Order Summaries by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/orders/bystatus/DELIVERED",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"bystatus",
+								"DELIVERED"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Order Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/orders/1/details",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"1",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "place order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"foodId\":7,\r\n        \"quantity\":1    \r\n    },\r\n    {\r\n        \"foodId\":3,\r\n        \"quantity\":2    \r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/orders/place",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"place"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Order Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"DELIVERED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/orders/6/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"6",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{JWT_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		},
+		{
+			"key": "JWT_TOKEN",
+			"value": ""
+		}
+	]
+}
