@@ -1,12 +1,26 @@
 import { useAuth } from "../providers/AuthProvider";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import AllQuotes from "./AllQuotes";
 import FavouriteQuotes from "./FavouriteQuotes";
+import { getAllQuotes } from "../services/quotes";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  // getAllQuotes
+  const [quotes, setQuotes] = useState();
+  useEffect(() => {
+    async function fetchQuotesData() {
+      try {
+        const data = await getAllQuotes();
+        setQuotes(data);
+      } catch (err) {
+        toast.error(err.message);
+      }
+    }
+    fetchQuotesData();
+  }, []);
+
   const [thisComponent, setThisComponent] = useState("all");
   return (
     <div style={{ padding: "0 20px" }}>
@@ -33,7 +47,13 @@ const Dashboard = () => {
           </Button>
         </div>
       </div>
-      <div>{thisComponent === "all" ? <AllQuotes /> : <FavouriteQuotes />}</div>
+      <div>
+        {thisComponent === "all" ? (
+          <AllQuotes quotes={quotes} />
+        ) : (
+          <FavouriteQuotes quotes={quotes} />
+        )}
+      </div>
     </div>
   );
 };

@@ -22,9 +22,6 @@ function App() {
     <div>
       <AuthProvider>
         <ThemeProvider>
-          {/* <div className="d-flex justify-content-center">
-            <h1>Online Food Order</h1>
-          </div> */}
           <Routes>
             <Route index element={<Login />} />
             <Route path="/home" element={<Dashboard />} />
@@ -64,6 +61,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="profile"
+                element={
+                  <ProtectedRoute>
+                    <UpdateProfile />
+                  </ProtectedRoute>
+                }
+              />
               {/* <Route
                 path="foods"
                 element={
@@ -96,14 +101,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="profile"
-                element={
-                  <ProtectedRoute>
-                    <UpdateProfile />
-                  </ProtectedRoute>
-                }
-              />
+             
              */}
             </Route>
             <Route path="*" element={<NotFound />} />

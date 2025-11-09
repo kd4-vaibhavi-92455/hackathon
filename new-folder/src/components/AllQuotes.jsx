@@ -1,10 +1,12 @@
 import React from "react";
 import QuoteCard from "./QuoteCard";
 
-const AllQuotes = () => {
+const AllQuotes = ({ quotes }) => {
   return (
     <div>
-      <QuoteCard />
+      {quotes?.map((data, index) => (
+        <QuoteCard key={data.id} quote={data} />
+      ))}
     </div>
   );
 };

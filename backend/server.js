@@ -2,12 +2,11 @@ const express = require("express");
 const cors = require("cors");
 
 const userRouter = require("./routes/user");
-// const foodRouter = require("./routes/foods");
-// const orderRouter = require("./routes/orders");
+const quotesRouter = require("./routes/quotes");
 
 const errorHandler = require("./utils/errhandler");
 
-// const auth = require("./utils/auth");
+const auth = require("./utils/auth");
 
 const app = express();
 
@@ -15,7 +14,7 @@ const app = express();
 app.use(cors());
 // app.use("/images", express.static("images"));
 app.use(express.json());
-// app.use(auth);
+app.use(auth);
 
 // Testing
 app.get("/", (req, res) => {
@@ -26,6 +25,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/user", userRouter);
+app.use("/quotes", quotesRouter);
 // app.use("/foods", foodRouter);
 // app.use("/orders", orderRouter);
 
